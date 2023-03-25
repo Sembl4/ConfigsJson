@@ -1,2 +1,0 @@
-"/usr/bin/gcc-ar-11" cr libConfig.a CMakeFiles/Config.dir/config.cpp.o
-"/usr/bin/gcc-ranlib-11" libConfig.a
