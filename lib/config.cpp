@@ -92,8 +92,124 @@ void Config::insert_or_replace(std::string key, nlohmann::basic_json<std::map,st
 {
     config[key] = value;
 }
-void Config::erase(std::string key)
+void Config::erase(const std::string& key)
 {
     config.erase(key);
+}
+void Config::clear()
+{
+    config.clear();
+}
+std::optional<Config> Config::getConfig(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config.is_object()) return std::nullopt;
+    Config cfg;
+    cfg.config = config[key].get<json>();
+    return cfg;
+}
+std::optional<double> Config::getDouble(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_number_float()) return std::nullopt;
+    return config[key].get<double>();
+}
+std::optional<int64_t> Config::getInt(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_number_integer()) return std::nullopt;
+    return config[key].get<int64_t>();
+}
+std::optional<uint64_t> Config::getUInt(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_number_unsigned()) return std::nullopt;
+    return config[key].get<uint64_t>();
+}
+std::optional<std::string> Config::getString(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_string()) return std::nullopt;
+    return config[key].get<std::string>();
+}
+std::optional<bool> Config::getBool(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_boolean()) return std::nullopt;
+    return config[key].get<bool>();
+}
+std::optional<std::vector<double>> Config::getArrDouble(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_array()) return std::nullopt;
+    std::vector<double> vec;
+    for(auto it : config[key])
+    {
+        if(!it.is_number_float()) return std::nullopt;
+        vec.push_back(it.get<double>());
+    }
+    return vec;
+}
+std::optional<std::vector<int64_t>> Config::getArrInt(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_array()) return std::nullopt;
+    std::vector<int64_t> vec;
+    for(auto it : config[key])
+    {
+        if(!it.is_number_integer()) return std::nullopt;
+        vec.push_back(it.get<int64_t>());
+    }
+    return vec;
+}
+std::optional<std::vector<uint64_t>> Config::getArrUInt(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_array()) return std::nullopt;
+    std::vector<uint64_t> vec;
+    for(auto it : config[key])
+    {
+        if(!it.is_number_unsigned()) return std::nullopt;
+        vec.push_back(it.get<uint64_t>());
+    }
+    return vec;
+}
+std::optional<std::vector<std::string>> Config::getArrString(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_array()) return std::nullopt;
+    std::vector<std::string> vec;
+    for(auto it : config[key])
+    {
+        if(!it.is_string()) return std::nullopt;
+        vec.push_back(it.get<std::string>());
+    }
+    return vec;
+}
+std::optional<std::vector<bool>> Config::getArrBool(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_array()) return std::nullopt;
+    std::vector<bool> vec;
+    for(auto it : config[key])
+    {
+        if(!it.is_boolean()) return std::nullopt;
+        vec.push_back(it.get<bool>());
+    }
+    return vec;
+}
+std::optional<std::vector<Config>> Config::getArrConfig(const std::string& key) const
+{
+    if(!config.contains(key)) return std::nullopt;
+    if(!config[key].is_array()) return std::nullopt;
+    std::vector<Config> vec;
+    for(auto it : config[key])
+    {
+        if(!it.is_object()) return std::nullopt;
+        Config temp;
+        temp.config = it.get<json>();
+        vec.push_back(temp);
+    }
+    return vec;
 }
 
