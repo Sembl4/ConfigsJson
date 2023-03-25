@@ -1,0 +1,6 @@
+/home/sembl4/Works/Projects/ConfigsJson/ConfigsJson/build/CMakeFiles/test_configs.dir
+/home/sembl4/Works/Projects/ConfigsJson/ConfigsJson/build/CMakeFiles/edit_cache.dir
+/home/sembl4/Works/Projects/ConfigsJson/ConfigsJson/build/CMakeFiles/rebuild_cache.dir
+/home/sembl4/Works/Projects/ConfigsJson/ConfigsJson/build/lib/CMakeFiles/Config.dir
+/home/sembl4/Works/Projects/ConfigsJson/ConfigsJson/build/lib/CMakeFiles/edit_cache.dir
+/home/sembl4/Works/Projects/ConfigsJson/ConfigsJson/build/lib/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,20 @@
+{
+    "something" : "some",
+    "orders" : 
+    {
+        "cfg_file":"orders.json"
+    },
+    "any_cfg":
+    {
+        "cfg_file_ap":"/home/sembl4/Works/Projects/ConfigsJson/ConfigsJson/any_cfg.json"
+    },
+    "cfg_file" : "orders.json",
+    "vector":
+    [
+        1,
+        2,
+        3,
+        4,
+        5
+    ]
+}
