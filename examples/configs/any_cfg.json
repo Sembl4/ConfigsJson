@@ -1,8 +1,0 @@
-{
-    "ss" : "THIS is any_cfg",
-    "cfg_file" : "cfg_file.json",
-    "any_file":
-    {
-        "cfg_file_ap" : "../examples/configs/cfg_file.json"
-    }
-}
