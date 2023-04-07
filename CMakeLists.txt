@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(test_configs)
+project(example)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -28,11 +28,11 @@ add_subdirectory(lib)
 
 include_directories(
     /usr/include/nlohmann
-	${PROJECT_SOURCE_DIR}/tests
+	${PROJECT_SOURCE_DIR}/examples
     ${PROJECT_SOURCE_DIR}/lib
 )
 
-add_executable(${PROJECT_NAME} tests/tests.cpp)
+add_executable(${PROJECT_NAME} examples/example.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Config
@@ -40,6 +40,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 
 target_link_directories(${PROJECT_NAME} PUBLIC
     "${PROJECT_BINARY_DIR}"
-	"${PROJECT_SOURCE_DIR}/tests"
+	"${PROJECT_SOURCE_DIR}/examples"
     "${PROJECT_SOURCE_DIR}/lib"
 )
